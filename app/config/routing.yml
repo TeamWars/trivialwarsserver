@@ -1,0 +1,4 @@
+acme_trivial_wars_server:
+    resource: "@AcmeTrivialWarsServerBundle/Resources/config/routing.php"
+    prefix:   /
+

@@ -1,0 +1,25 @@
+Respuesta:
+    type: entity
+    table: respuesta
+    uniqueConstraints:
+        id_respuesta:
+            columns:
+                - id_respuesta
+    id:
+        idRespuesta:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id_respuesta
+            generator:
+                strategy: IDENTITY
+    fields:
+        contenido:
+            type: string
+            nullable: false
+            length: 1000
+            fixed: false
+            comment: ''
+    lifecycleCallbacks: {  }

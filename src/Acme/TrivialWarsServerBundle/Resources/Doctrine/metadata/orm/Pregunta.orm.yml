@@ -1,0 +1,59 @@
+Pregunta:
+    type: entity
+    table: pregunta
+    indexes:
+        idRespuestaCorrecta:
+            columns:
+                - idRespuestaCorrecta
+        idRespuestaUno:
+            columns:
+                - idRespuestaUno
+        idRespuestaDos:
+            columns:
+                - idRespuestaDos
+    id:
+        idPregunta:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id_pregunta
+            generator:
+                strategy: IDENTITY
+    fields:
+        pregunta:
+            type: string
+            nullable: false
+            length: 1000
+            fixed: false
+            comment: ''
+    manyToOne:
+        idrespuestados:
+            targetEntity: Respuesta
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idRespuestaDos:
+                    referencedColumnName: id_respuesta
+            orphanRemoval: false
+        idrespuestacorrecta:
+            targetEntity: Respuesta
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idRespuestaCorrecta:
+                    referencedColumnName: id_respuesta
+            orphanRemoval: false
+        idrespuestauno:
+            targetEntity: Respuesta
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idRespuestaUno:
+                    referencedColumnName: id_respuesta
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
