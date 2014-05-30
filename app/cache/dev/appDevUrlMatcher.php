@@ -245,6 +245,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return array (  '_controller' => 'Acme\\TrivialWarsServerBundle\\Controller\\UsuarioController::loginAction',  '_route' => 'user_login',);
                 }
 
+                // user_reg
+                if ($pathinfo === '/trivial/user/register') {
+                    return array (  '_controller' => 'Acme\\TrivialWarsServerBundle\\Controller\\UsuarioController::registerAction',  '_route' => 'user_reg',);
+                }
+
             }
 
             // question

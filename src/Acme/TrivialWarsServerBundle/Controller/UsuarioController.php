@@ -240,7 +240,24 @@ class UsuarioController extends Controller {
     public function loginAction(Request $request) {
         
         return $this->getDoctrine()->getManager()->getRepository("AcmeTrivialWarsServerBundle:Usuario")
-                ->findUserByLogin($request->get("user"),$request->get("password"));
+                ->findUserByLogin($request->get("user"),md5($request->get("password")));
     }
 
+    public function registerAction(Request $request) {
+        
+        $usuario = new Usuario();
+        $usuario->setNombre($request->get("nameReg"));
+        $usuario->setPassword(md5($request->get("passwordReg")));
+        $usuario->setEmail($request->get("emailReg"));
+        $usuario->setPartidasGanadas(0);
+        $usuario->setPartidasJugadas(0);
+        $usuario->setPartidasPerdidas(0);
+        $usuario->setRol("ROLE_USER");
+        
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($usuario);
+        $em->flush();
+        
+        return new \Symfony\Component\HttpFoundation\JsonResponse(array("estado"=>"true"));
+    }
 }

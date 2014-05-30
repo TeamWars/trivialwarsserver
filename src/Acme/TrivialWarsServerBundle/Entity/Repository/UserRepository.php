@@ -30,5 +30,20 @@ class UserRepository extends EntityRepository
         }
     }
     
+    public function findUserByName($user) {
+        
+        $usuario = $this->getEntityManager()->createQueryBuilder()
+                ->select("u")
+                ->from("AcmeTrivialWarsServerBundle:Usuario", "u")
+                ->where("u.nombre = '" . $user ."'")
+                ->getQuery()
+                ->getArrayResult();
+
+        if ($usuario) {
+            return new \Symfony\Component\HttpFoundation\JsonResponse($usuario);
+        } else {
+            return false;
+        }
+    }
     
 }
