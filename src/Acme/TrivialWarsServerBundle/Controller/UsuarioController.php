@@ -256,7 +256,7 @@ class UsuarioController extends Controller {
     public function isAuthenticatedAction() {
         session_start();
         if (isset($_SESSION["userId"])) {
-            return new \Symfony\Component\HttpFoundation\JsonResponse(array("autenticado" => true, "usuario" => $_SESSION["username"]));
+            return new \Symfony\Component\HttpFoundation\JsonResponse(array("autenticado" => true, "usuario" => $_SESSION["username"], "id" => $_SESSION["userId"]));
         } else {
             return new \Symfony\Component\HttpFoundation\JsonResponse(array("autenticado" => false));
         }
