@@ -3,7 +3,6 @@
 namespace Acme\TrivialWarsServerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Usuario
@@ -26,15 +25,13 @@ class Usuario
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=100, nullable=false)
-     * @Assert\NotBlank()
      */
     private $nombre;
 
     /**
      * @var string
-     * 
+     *
      * @ORM\Column(name="password", type="string", length=32, nullable=false)
-     * @Assert\NotBlank()
      */
     private $password;
 

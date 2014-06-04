@@ -1,23 +1,13 @@
 Partida:
     type: entity
     table: partida
-    indexes:
-        id_jugador_ganador:
-            columns:
-                - id_jugador_ganador
-        id_jugador_perdedor1:
-            columns:
-                - id_jugador_perdedor1
-        id_jugador_perdedor2:
-            columns:
-                - id_jugador_perdedor2
-        id_jugador_perdedor3:
-            columns:
-                - id_jugador_perdedor3
     uniqueConstraints:
         id_partida:
             columns:
                 - id_partida
+        nombre:
+            columns:
+                - nombre
     id:
         idPartida:
             type: integer
@@ -29,49 +19,21 @@ Partida:
             generator:
                 strategy: IDENTITY
     fields:
-        idJugadorGanador:
-            type: integer
-            nullable: true
-            unsigned: false
-            comment: ''
-            column: id_jugador_ganador
-        idJugadorPerdedor1:
-            type: integer
-            nullable: true
-            unsigned: false
-            comment: ''
-            column: id_jugador_perdedor1
-        idJugadorPerdedor2:
-            type: integer
-            nullable: true
-            unsigned: false
-            comment: ''
-            column: id_jugador_perdedor2
-        idJugadorPerdedor3:
-            type: integer
-            nullable: true
-            unsigned: false
-            comment: ''
-            column: id_jugador_perdedor3
         numeroJugadores:
             type: integer
             nullable: true
             unsigned: false
             comment: ''
             column: numero_jugadores
-        fechaPartida:
-            type: datetime
-            nullable: true
+        turno:
+            type: integer
+            nullable: false
+            unsigned: false
             comment: ''
-            column: fecha_partida
-        horaComienzo:
-            type: time
-            nullable: true
+        nombre:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
             comment: ''
-            column: hora_comienzo
-        horaFin:
-            type: time
-            nullable: true
-            comment: ''
-            column: hora_fin
     lifecycleCallbacks: {  }

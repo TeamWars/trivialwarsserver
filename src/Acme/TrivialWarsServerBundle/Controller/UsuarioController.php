@@ -238,13 +238,32 @@ class UsuarioController extends Controller {
     }
 
     public function loginAction(Request $request) {
-        
-        return $this->getDoctrine()->getManager()->getRepository("AcmeTrivialWarsServerBundle:Usuario")
-                ->findUserByLogin($request->get("user"),md5($request->get("password")));
+
+        $user = $this->getDoctrine()->getManager()->getRepository("AcmeTrivialWarsServerBundle:Usuario")
+                        ->findUserByLogin($request->get("user"), md5($request->get("password")));
+        if ($user) {
+            if (isset($_SESSION["userId"])) {
+                session_destroy();
+            }
+            session_start();
+            $_SESSION["userId"] = $user[0]["idUsuario"];
+            $_SESSION["username"] = $request->get("user");
+        }
+
+        return new \Symfony\Component\HttpFoundation\JsonResponse($user);
+    }
+
+    public function isAuthenticatedAction() {
+        session_start();
+        if (isset($_SESSION["userId"])) {
+            return new \Symfony\Component\HttpFoundation\JsonResponse(array("autenticado" => true, "usuario" => $_SESSION["username"]));
+        } else {
+            return new \Symfony\Component\HttpFoundation\JsonResponse(array("autenticado" => false));
+        }
     }
 
     public function registerAction(Request $request) {
-        
+
         $usuario = new Usuario();
         $usuario->setNombre($request->get("nameReg"));
         $usuario->setPassword(md5($request->get("passwordReg")));
@@ -253,11 +272,12 @@ class UsuarioController extends Controller {
         $usuario->setPartidasJugadas(0);
         $usuario->setPartidasPerdidas(0);
         $usuario->setRol("ROLE_USER");
-        
+
         $em = $this->getDoctrine()->getManager();
         $em->persist($usuario);
         $em->flush();
-        
-        return new \Symfony\Component\HttpFoundation\JsonResponse(array("estado"=>"true"));
+
+        return new \Symfony\Component\HttpFoundation\JsonResponse(array("estado" => "true"));
     }
+
 }

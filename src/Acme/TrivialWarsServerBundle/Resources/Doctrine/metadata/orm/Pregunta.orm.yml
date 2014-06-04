@@ -29,15 +29,6 @@ Pregunta:
             fixed: false
             comment: ''
     manyToOne:
-        idrespuestados:
-            targetEntity: Respuesta
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                idRespuestaDos:
-                    referencedColumnName: id_respuesta
-            orphanRemoval: false
         idrespuestacorrecta:
             targetEntity: Respuesta
             cascade: {  }
@@ -45,6 +36,15 @@ Pregunta:
             inversedBy: null
             joinColumns:
                 idRespuestaCorrecta:
+                    referencedColumnName: id_respuesta
+            orphanRemoval: false
+        idrespuestados:
+            targetEntity: Respuesta
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idRespuestaDos:
                     referencedColumnName: id_respuesta
             orphanRemoval: false
         idrespuestauno:

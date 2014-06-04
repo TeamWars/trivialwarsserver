@@ -36,6 +36,10 @@ $collection->add('user_reg', new Route('/trivial/user/register', array(
     '_controller' => 'AcmeTrivialWarsServerBundle:Usuario:register',
 )));
 
+$collection->add('user_auth', new Route('/trivial/user/auth', array(
+    '_controller' => 'AcmeTrivialWarsServerBundle:Usuario:isAuthenticated',
+)));
+
 $collection->add('question', new Route('/trivial/pregunta', array(
     '_controller' => 'AcmeTrivialWarsServerBundle:Pregunta:index',
 )));

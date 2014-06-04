@@ -1,0 +1,52 @@
+JuegaPartida:
+    type: entity
+    table: juega_partida
+    uniqueConstraints:
+        id_partida:
+            columns:
+                - id_partida
+        id_usuario:
+            columns:
+                - id_usuario
+    id:
+        idJuego:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id_juego
+            generator:
+                strategy: IDENTITY
+    fields:
+        ficha:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+        casilla:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+    manyToOne:
+        idPartida:
+            targetEntity: Partida
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_partida:
+                    referencedColumnName: id_partida
+            orphanRemoval: false
+        idUsuario:
+            targetEntity: Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_usuario:
+                    referencedColumnName: id_usuario
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

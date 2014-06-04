@@ -24,7 +24,8 @@ class UserRepository extends EntityRepository
                 ->getArrayResult();
 
         if ($usuario) {
-            return new \Symfony\Component\HttpFoundation\JsonResponse($usuario);
+            return $usuario;
+//            return new \Symfony\Component\HttpFoundation\JsonResponse($usuario);
         } else {
             return false;
         }

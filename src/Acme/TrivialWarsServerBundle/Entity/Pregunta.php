@@ -33,20 +33,20 @@ class Pregunta
      *
      * @ORM\ManyToOne(targetEntity="Respuesta")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idRespuestaDos", referencedColumnName="id_respuesta")
+     *   @ORM\JoinColumn(name="idRespuestaCorrecta", referencedColumnName="id_respuesta")
      * })
      */
-    private $idrespuestados;
+    private $idrespuestacorrecta;
 
     /**
      * @var \Respuesta
      *
      * @ORM\ManyToOne(targetEntity="Respuesta")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idRespuestaCorrecta", referencedColumnName="id_respuesta")
+     *   @ORM\JoinColumn(name="idRespuestaDos", referencedColumnName="id_respuesta")
      * })
      */
-    private $idrespuestacorrecta;
+    private $idrespuestados;
 
     /**
      * @var \Respuesta
@@ -94,29 +94,6 @@ class Pregunta
     }
 
     /**
-     * Set idrespuestados
-     *
-     * @param \Acme\TrivialWarsServerBundle\Entity\Respuesta $idrespuestados
-     * @return Pregunta
-     */
-    public function setIdrespuestados(\Acme\TrivialWarsServerBundle\Entity\Respuesta $idrespuestados = null)
-    {
-        $this->idrespuestados = $idrespuestados;
-
-        return $this;
-    }
-
-    /**
-     * Get idrespuestados
-     *
-     * @return \Acme\TrivialWarsServerBundle\Entity\Respuesta 
-     */
-    public function getIdrespuestados()
-    {
-        return $this->idrespuestados;
-    }
-
-    /**
      * Set idrespuestacorrecta
      *
      * @param \Acme\TrivialWarsServerBundle\Entity\Respuesta $idrespuestacorrecta
@@ -137,6 +114,29 @@ class Pregunta
     public function getIdrespuestacorrecta()
     {
         return $this->idrespuestacorrecta;
+    }
+
+    /**
+     * Set idrespuestados
+     *
+     * @param \Acme\TrivialWarsServerBundle\Entity\Respuesta $idrespuestados
+     * @return Pregunta
+     */
+    public function setIdrespuestados(\Acme\TrivialWarsServerBundle\Entity\Respuesta $idrespuestados = null)
+    {
+        $this->idrespuestados = $idrespuestados;
+
+        return $this;
+    }
+
+    /**
+     * Get idrespuestados
+     *
+     * @return \Acme\TrivialWarsServerBundle\Entity\Respuesta 
+     */
+    public function getIdrespuestados()
+    {
+        return $this->idrespuestados;
     }
 
     /**
