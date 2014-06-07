@@ -242,21 +242,17 @@ class UsuarioController extends Controller {
         $user = $this->getDoctrine()->getManager()->getRepository("AcmeTrivialWarsServerBundle:Usuario")
                         ->findUserByLogin($request->get("user"), md5($request->get("password")));
         if ($user) {
-            if (isset($_SESSION["userId"])) {
-                session_destroy();
-            }
-            session_start();
-            $_SESSION["userId"] = $user[0]["idUsuario"];
-            $_SESSION["username"] = $request->get("user");
+            $session = $request->getSession();
+            $session->set("usuario", array("id"=>$user[0]["idUsuario"],"username"=>$request->get("user")));
         }
 
         return new \Symfony\Component\HttpFoundation\JsonResponse($user);
     }
 
-    public function isAuthenticatedAction() {
-        session_start();
-        if (isset($_SESSION["userId"])) {
-            return new \Symfony\Component\HttpFoundation\JsonResponse(array("autenticado" => true, "usuario" => $_SESSION["username"], "id" => $_SESSION["userId"]));
+    public function isAuthenticatedAction(Request $request) {
+        $session = $request->getSession();
+        if ($session->get("usuario")) {
+            return new \Symfony\Component\HttpFoundation\JsonResponse(array("autenticado" => true, "usuario" => $session->get("usuario", "username")));
         } else {
             return new \Symfony\Component\HttpFoundation\JsonResponse(array("autenticado" => false));
         }

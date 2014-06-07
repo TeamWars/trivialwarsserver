@@ -61,7 +61,22 @@ class PartidaController extends Controller
     
     public function joinAction(Request $param) {
         
+        $em = $this->getDoctrine()->getManager();
+        $usuario = $em->getRepository('AcmeTrivialWarsServerBundle:Usuario')->find($param->get("idUsuario"));
         
+        $em = $this->getDoctrine()->getManager();
+        $partida = $em->getRepository('AcmeTrivialWarsServerBundle:Partida')->find($param->get("idPartida"));
+        
+        $juega = new JuegaPartida();
+        $juega->setIdPartida($partida);
+        $juega->setIdUsuario($usuario);
+        $juega->setFicha($param->get("ficha"));
+        $juega->setCasilla('0');
+        
+        $em->persist($juega);
+        $em->flush();
+
+        return new \Symfony\Component\HttpFoundation\JsonResponse(array("estado" => "true"));
         
     }
     
@@ -75,6 +90,7 @@ class PartidaController extends Controller
         }else{
             $fichasOcupadas = $em->findFichasByPartida($partida[0]["id"]);
             $fichasOcupadas["fichas"] = $fichasOcupadas;
+            $fichasOcupadas["idPartida"] = $partida[0]["id"];
             $fichasOcupadas["estado"] = true;
             return new \Symfony\Component\HttpFoundation\JsonResponse($fichasOcupadas);
         }
