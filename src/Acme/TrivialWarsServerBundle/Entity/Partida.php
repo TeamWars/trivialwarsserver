@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Partida
  *
  * @ORM\Table(name="partida", uniqueConstraints={@ORM\UniqueConstraint(name="id_partida", columns={"id_partida"}), @ORM\UniqueConstraint(name="nombre", columns={"nombre"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Acme\TrivialWarsServerBundle\Entity\Repository\PartidaRepository")
  */
 class Partida
 {
@@ -19,7 +19,7 @@ class Partida
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idPartida;
+    private $id;
 
     /**
      * @var integer
@@ -49,9 +49,9 @@ class Partida
      *
      * @return integer 
      */
-    public function getIdPartida()
+    public function getId()
     {
-        return $this->idPartida;
+        return $this->id;
     }
 
     /**

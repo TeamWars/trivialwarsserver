@@ -78,6 +78,8 @@
   'DoctrineBundle:Collector:db.html.twig' => 'C:\\xampp\\htdocs\\TrivialWarsServer\\vendor\\doctrine\\doctrine-bundle\\Doctrine\\Bundle\\DoctrineBundle/Resources/views/Collector/db.html.twig',
   'DoctrineBundle:Collector:explain.html.twig' => 'C:\\xampp\\htdocs\\TrivialWarsServer\\vendor\\doctrine\\doctrine-bundle\\Doctrine\\Bundle\\DoctrineBundle/Resources/views/Collector/explain.html.twig',
   'AcmeTrivialWarsServerBundle:Default:index.html.twig' => 'C:\\xampp\\htdocs\\TrivialWarsServer\\src\\Acme\\TrivialWarsServerBundle/Resources/views/Default/index.html.twig',
+  'AcmeTrivialWarsServerBundle:Partida:index.html.twig' => 'C:\\xampp\\htdocs\\TrivialWarsServer\\src\\Acme\\TrivialWarsServerBundle/Resources/views/Partida/index.html.twig',
+  'AcmeTrivialWarsServerBundle:Partida:show.html.twig' => 'C:\\xampp\\htdocs\\TrivialWarsServer\\src\\Acme\\TrivialWarsServerBundle/Resources/views/Partida/show.html.twig',
   'AcmeTrivialWarsServerBundle:Pregunta:index.html.twig' => 'C:\\xampp\\htdocs\\TrivialWarsServer\\src\\Acme\\TrivialWarsServerBundle/Resources/views/Pregunta/index.html.twig',
   'AcmeTrivialWarsServerBundle:Pregunta:show.html.twig' => 'C:\\xampp\\htdocs\\TrivialWarsServer\\src\\Acme\\TrivialWarsServerBundle/Resources/views/Pregunta/show.html.twig',
   'AcmeTrivialWarsServerBundle:Usuario:edit.html.twig' => 'C:\\xampp\\htdocs\\TrivialWarsServer\\src\\Acme\\TrivialWarsServerBundle/Resources/views/Usuario/edit.html.twig',

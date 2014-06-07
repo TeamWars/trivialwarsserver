@@ -44,6 +44,14 @@ $collection->add('user_auth', new Route('/trivial/user/auth', array(
     '_controller' => 'AcmeTrivialWarsServerBundle:Usuario:isAuthenticated',
 )));
 
+$collection->add('user_join', new Route('/trivial/user/join', array(
+    '_controller' => 'AcmeTrivialWarsServerBundle:Partida:join',
+)));
+
+$collection->add('name_game', new Route('/trivial/user/namegame', array(
+    '_controller' => 'AcmeTrivialWarsServerBundle:Partida:game',
+)));
+
 $collection->add('question', new Route('/trivial/pregunta', array(
     '_controller' => 'AcmeTrivialWarsServerBundle:Pregunta:index',
 )));
