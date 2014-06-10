@@ -21,6 +21,10 @@ $collection->add('game_create', new Route('/trivial/game/create', array(
     '_controller' => 'AcmeTrivialWarsServerBundle:Partida:create',
 )));
 
+$collection->add('game_state', new Route('/trivial/game/state', array(
+    '_controller' => 'AcmeTrivialWarsServerBundle:Partida:state',
+)));
+
 $collection->add('register', new Route('/trivial/register', array(
     '_controller' => 'AcmeTrivialWarsServerBundle:Trivial:register',
 )));

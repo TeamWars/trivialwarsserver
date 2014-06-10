@@ -230,6 +230,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return array (  '_controller' => 'Acme\\TrivialWarsServerBundle\\Controller\\PartidaController::createAction',  '_route' => 'game_create',);
                 }
 
+                // game_state
+                if ($pathinfo === '/trivial/game/state') {
+                    return array (  '_controller' => 'Acme\\TrivialWarsServerBundle\\Controller\\PartidaController::stateAction',  '_route' => 'game_state',);
+                }
+
             }
 
             // register

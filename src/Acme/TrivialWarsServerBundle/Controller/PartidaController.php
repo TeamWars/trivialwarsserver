@@ -73,6 +73,9 @@ class PartidaController extends Controller
         $juega->setFicha($param->get("ficha"));
         $juega->setCasilla('0');
         
+        $session = $param->getSession();
+        $session->set("nombrePartida", $param->get("nombrePartida"));
+        
         $em->persist($juega);
         $em->flush();
 
@@ -96,6 +99,15 @@ class PartidaController extends Controller
         }
         
     }
+    
+    
+    public function stateAction(Request $param){
+        
+        $partida = $param->getSession()->get("nombrePartida");
+        
+        return new \Symfony\Component\HttpFoundation\JsonResponse(array("nombrePartida" => $partida));
+        
+    }
 
 
     public function createAction(Request $param) {
@@ -105,6 +117,9 @@ class PartidaController extends Controller
         $partida->setNumeroJugadores($param->get("jugadores"));
         $partida->setTurno($param->get("id"));
         
+        $session = $param->getSession();
+        $session->set("nombrePartida", $param->get("nombre"));
+      
         $em = $this->getDoctrine()->getManager();
         $em->persist($partida);
         $em->flush();
