@@ -9,7 +9,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Acme\TrivialWarsServerBundle\Entity\Partida;
 use Acme\TrivialWarsServerBundle\Entity\JuegaPartida;
-use Acme\TrivialWarsServerBundle\Entity\Usuario;
 
 /**
  * Partida controller.
@@ -75,6 +74,7 @@ class PartidaController extends Controller
         
         $session = $param->getSession();
         $session->set("nombrePartida", $param->get("nombrePartida"));
+        $session->set("idPartida", $param->get("idPartida"));
         
         $em->persist($juega);
         $em->flush();
@@ -86,7 +86,7 @@ class PartidaController extends Controller
     public function gameAction(Request $param){
         
         $em = $this->getDoctrine()->getManager()->getRepository('AcmeTrivialWarsServerBundle:Partida');
-        $partida = $em->findPreguntaByName($param->get("nombre"));
+        $partida = $em->findPartidaByName($param->get("nombre"));
         
         if(!$partida){
             return new \Symfony\Component\HttpFoundation\JsonResponse(array("estado" => false));
@@ -103,9 +103,15 @@ class PartidaController extends Controller
     
     public function stateAction(Request $param){
         
-        $partida = $param->getSession()->get("nombrePartida");
+        $nombrePartida = $param->getSession()->get("nombrePartida");
+        $id = $param->getSession()->get("idPartida");
+ 
+        $em = $this->getDoctrine()->getManager()->getRepository('AcmeTrivialWarsServerBundle:Partida');
+        $partida = $em->findJugadoresByPartida($id);
         
-        return new \Symfony\Component\HttpFoundation\JsonResponse(array("nombrePartida" => $partida));
+        $partida["usuarioActual"] = $param->getSession()->get("usuario");
+        
+        return new \Symfony\Component\HttpFoundation\JsonResponse($partida);
         
     }
 
@@ -116,13 +122,14 @@ class PartidaController extends Controller
         $partida->setNombre($param->get("nombre"));
         $partida->setNumeroJugadores($param->get("jugadores"));
         $partida->setTurno($param->get("id"));
-        
-        $session = $param->getSession();
-        $session->set("nombrePartida", $param->get("nombre"));
       
         $em = $this->getDoctrine()->getManager();
         $em->persist($partida);
         $em->flush();
+        
+        $session = $param->getSession();
+        $session->set("nombrePartida", $param->get("nombre"));
+        $session->set("idPartida", $partida->getId());
         
         $em = $this->getDoctrine()->getManager();
         $usuario = $em->getRepository('AcmeTrivialWarsServerBundle:Usuario')->find($param->get("id"));

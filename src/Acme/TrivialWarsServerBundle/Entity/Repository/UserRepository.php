@@ -25,7 +25,6 @@ class UserRepository extends EntityRepository
 
         if ($usuario) {
             return $usuario;
-//            return new \Symfony\Component\HttpFoundation\JsonResponse($usuario);
         } else {
             return false;
         }

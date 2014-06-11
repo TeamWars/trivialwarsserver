@@ -209,22 +209,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         if (0 === strpos($pathinfo, '/trivial')) {
-            // homepage
-            if ($pathinfo === '/trivial') {
-                return array (  '_controller' => 'Acme\\TrivialWarsServerBundle\\Controller\\TrivialController::indexAction',  '_route' => 'homepage',);
-            }
-
-            // player
-            if ($pathinfo === '/trivial/player') {
-                return array (  '_controller' => 'Acme\\TrivialWarsServerBundle\\Controller\\UserController::playerAction',  '_route' => 'player',);
-            }
-
             if (0 === strpos($pathinfo, '/trivial/game')) {
-                // board
-                if ($pathinfo === '/trivial/game') {
-                    return array (  '_controller' => 'Acme\\TrivialWarsServerBundle\\Controller\\TrivialController::tableroAction',  '_route' => 'board',);
-                }
-
                 // game_create
                 if ($pathinfo === '/trivial/game/create') {
                     return array (  '_controller' => 'Acme\\TrivialWarsServerBundle\\Controller\\PartidaController::createAction',  '_route' => 'game_create',);
@@ -235,11 +220,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return array (  '_controller' => 'Acme\\TrivialWarsServerBundle\\Controller\\PartidaController::stateAction',  '_route' => 'game_state',);
                 }
 
-            }
-
-            // register
-            if ($pathinfo === '/trivial/register') {
-                return array (  '_controller' => 'Acme\\TrivialWarsServerBundle\\Controller\\TrivialController::registerAction',  '_route' => 'register',);
             }
 
             if (0 === strpos($pathinfo, '/trivial/user')) {

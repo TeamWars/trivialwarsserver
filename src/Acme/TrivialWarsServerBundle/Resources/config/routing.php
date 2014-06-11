@@ -5,17 +5,17 @@ use Symfony\Component\Routing\Route;
 
 $collection = new RouteCollection();
 
-$collection->add('homepage', new Route('/trivial', array(
-    '_controller' => 'AcmeTrivialWarsServerBundle:Trivial:index',
-)));
-
-$collection->add('player', new Route('/trivial/player', array(
-    '_controller' => 'AcmeTrivialWarsServerBundle:User:player',
-)));
-
-$collection->add('board', new Route('/trivial/game', array(
-    '_controller' => 'AcmeTrivialWarsServerBundle:Trivial:tablero',
-)));
+//$collection->add('homepage', new Route('/trivial', array(
+//    '_controller' => 'AcmeTrivialWarsServerBundle:Trivial:index',
+//)));
+//
+//$collection->add('player', new Route('/trivial/player', array(
+//    '_controller' => 'AcmeTrivialWarsServerBundle:User:player',
+//)));
+//
+//$collection->add('board', new Route('/trivial/game', array(
+//    '_controller' => 'AcmeTrivialWarsServerBundle:Trivial:tablero',
+//)));
 
 $collection->add('game_create', new Route('/trivial/game/create', array(
     '_controller' => 'AcmeTrivialWarsServerBundle:Partida:create',
@@ -25,9 +25,9 @@ $collection->add('game_state', new Route('/trivial/game/state', array(
     '_controller' => 'AcmeTrivialWarsServerBundle:Partida:state',
 )));
 
-$collection->add('register', new Route('/trivial/register', array(
-    '_controller' => 'AcmeTrivialWarsServerBundle:Trivial:register',
-)));
+//$collection->add('register', new Route('/trivial/register', array(
+//    '_controller' => 'AcmeTrivialWarsServerBundle:Trivial:register',
+//)));
 
 $collection->add('user', new Route('/trivial/user', array(
     '_controller' => 'AcmeTrivialWarsServerBundle:Usuario:index',

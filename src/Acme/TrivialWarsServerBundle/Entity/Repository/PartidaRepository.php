@@ -13,7 +13,7 @@ use Doctrine\ORM\EntityRepository;
 class PartidaRepository extends EntityRepository
 {
     
-    public function findPreguntaByName($name) {
+    public function findPartidaByName($name) {
         
         $partida = $this->getEntityManager()->createQueryBuilder()
                 ->select("p")
@@ -31,6 +31,20 @@ class PartidaRepository extends EntityRepository
                 ->select("p")
                 ->from("AcmeTrivialWarsServerBundle:JuegaPartida","p")
                 ->where("p.idPartida='".$id."'")
+                ->getQuery()
+                ->getArrayResult();
+        
+        return $fichas;
+    }
+    
+    public function findJugadoresByPartida($id){
+        
+        $fichas = $this->getEntityManager()->createQueryBuilder()
+                ->select("u,p,j")
+                ->from("AcmeTrivialWarsServerBundle:JuegaPartida", "j")
+                ->join("j.idUsuario", "u")
+                ->join("j.idPartida", "p")
+                ->where("j.idPartida='".$id."'")
                 ->getQuery()
                 ->getArrayResult();
         

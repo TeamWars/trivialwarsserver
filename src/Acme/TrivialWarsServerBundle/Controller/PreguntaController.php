@@ -23,8 +23,6 @@ class PreguntaController extends Controller
     {        
         $pregunta = $this->getDoctrine()->getManager()->getRepository('AcmeTrivialWarsServerBundle:Pregunta')
                 ->findRespuestasByPregunta($request->get("id"));
-//                ->findRespuestasByPregunta(1);
-//                ->findPreguntaById($request->get("idQuestion"))
 
         return new \Symfony\Component\HttpFoundation\JsonResponse($pregunta[0]);
         
